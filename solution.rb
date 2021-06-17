@@ -1,16 +1,31 @@
 # Brute Force O(n^2) Solution:
 
+# def num_pair(arr, target)
+#   result = []
+#   for i in 0...arr.length
+#     for j in 0...arr.length
+#       if target - arr[i] == arr[j] && !result.include?(arr[j])
+#         result << arr[i]
+#         result << target-arr[i]
+#       end
+#       j += 1
+#     end
+#     i += 1
+#   end
+#   result
+# end
+
+# O(n) Solution:
+
 def num_pair(arr, target)
+  hash = {}
+  arr.each do |elem|
+    hash[elem] = 1 unless hash[elem]
+    hash[elem] += 1
+  end
   result = []
-  for i in 0...arr.length
-    for j in 0...arr.length
-      if target - arr[i] == arr[j] && !result.include?(arr[j])
-        result << arr[i]
-        result << target-arr[i]
-      end
-      j += 1
-    end
-    i += 1
+  arr.each do |elem|
+    result = [elem, target - elem] if hash[target - elem] && result != [target - elem, elem]
   end
   result
 end
