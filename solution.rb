@@ -33,5 +33,5 @@ def num_pair(arr, target)
   result
 end
 
-nums = [2,7,11,15]
+nums = [2, 7, 11, 15]
 p num_pair(nums, 9)
