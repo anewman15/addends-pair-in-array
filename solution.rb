@@ -20,8 +20,11 @@
 def num_pair(arr, target)
   hash = {}
   arr.each do |elem|
-    hash[elem] = 1 unless hash[elem]
-    hash[elem] += 1
+    if hash[elem]
+      hash[elem] += 1
+    else
+      hash[elem] = 1
+    end
   end
   result = []
   arr.each do |elem|
@@ -30,5 +33,5 @@ def num_pair(arr, target)
   result
 end
 
-nums = [2, 7, 11, 15]
+nums = [2,7,11,15]
 p num_pair(nums, 9)
